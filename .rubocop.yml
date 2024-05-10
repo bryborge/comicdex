@@ -1,0 +1,39 @@
+require:
+  - rubocop-capybara
+  - rubocop-factory_bot
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'config/environments/**/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'app/lib/collection_properties.rb'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/system/**/*'
+
+RSpec/MultipleExpectations:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Style/Documentation:
+  Exclude:
+    - 'db/migrate/**/*'
+
+# Rails-specific configuration
+Rails:
+  Enabled: true
+
+# Add other configurations and customizations as needed

@@ -1,0 +1,13 @@
+<h2>Comics</h2>
+
+<ul>
+  <% if @comics.any? %>
+    <% @comics.each do |comic| %>
+      <li>
+        <%= link_to "#{comic.title} ##{comic.issue_number}", comic_path(comic) %>
+      </li>
+    <% end %>
+  <% else %>
+    <p>There are no comics to show :(</p>
+  <% end %>
+</ul>

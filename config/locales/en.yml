@@ -28,4 +28,5 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  alerts:
+    comic_not_found: "Comic not found."

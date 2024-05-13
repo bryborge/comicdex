@@ -2,7 +2,7 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.0.0
+    rev: v4.5.0
     hooks:
       - id: end-of-file-fixer   # add single empty line at EOF
       - id: trailing-whitespace # trim trailing whitespace
@@ -12,4 +12,6 @@ repos:
     rev: v1.3.5
     hooks:
       - id: rubocop
-      - id: rspec
+      # FIXME: rspec itself works, but not when run by pre-commit.
+      #        e.g., "Failure/Error: require_relative '../config/environment'"
+      # - id: rspec

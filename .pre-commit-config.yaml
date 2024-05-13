@@ -12,4 +12,6 @@ repos:
     rev: v1.3.5
     hooks:
       - id: rubocop
+      # FIXME: rspec itself works, but not when run by pre-commit.
+      #        e.g., "Failure/Error: require_relative '../config/environment'"
       # - id: rspec

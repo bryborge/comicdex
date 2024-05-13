@@ -1,1 +1,56 @@
-<h1>Welcome to Comicdex!</h1>
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      <h2>Home</h2>
+
+      <p>This is static/dumb currently.</p>
+
+      <article class="card mt-2 mb-2">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="">Bryan B.</a> collected a comic issue</a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            <%= time_ago_in_words(Time.now) %>
+          </h6>
+          <p class="card-text"><a href="">Trees #1</a> by <a href="">Warren Ellis</a> and <a href="">Jason Howard</a></p>
+          <button class="btn btn-outline-secondary btn-sm">➕</button>
+        </div>
+      </article>
+
+      <article class="card mt-2 mb-2">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="">Bryan B.</a> wants a comic issue</a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            <%= time_ago_in_words(Time.now) %>
+          </h6>
+          <p class="card-text"><a href="">Saga #1</a> by <a href="">Brian K. Vaughn</a></p>
+          <button class="btn btn-outline-secondary btn-sm">➕</button>
+        </div>
+      </article>
+
+      <article class="card mt-2 mb-2">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="">Dave B.</a> tagged a comic issue</a>
+          </h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            <%= time_ago_in_words(Time.now) %>
+          </h6>
+          <p class="card-text"><a href="">The Fantastic Four #1</a> as <a href="">Silver Age</a></p>
+          <button class="btn btn-outline-secondary btn-sm">➕</button>
+        </div>
+      </article>
+
+      <article class="card mt-2 mb-2">
+        <div class="card-body">
+          <h5 class="card-title"><a href="">User</a> performed action</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">time in words that the action was performed</h6>
+          <p class="card-text">Some meta-data that's relevant and describes details about the event</p>
+          <button class="btn btn-outline-secondary btn-sm">➕</button>
+        </div>
+      </article>
+    </div>
+  </div>

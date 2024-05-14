@@ -12,6 +12,11 @@
         <%= f.label :email, for: "floatingEmail" %>
       </div>
 
+      <div class="form-floating">
+        <%= f.text_field :nickname, autocomplete: "nickname", class: "form-control", id: "floatingNickname", placeholder: "nickname" %>
+        <%= f.label :nickname, for: "floatingNickname" %>
+      </div>
+
       <div class="my-3">
         <div class="form-floating">
           <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "floatingPassword", placeholder: "password" %>

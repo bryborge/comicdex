@@ -2,7 +2,6 @@
 
 # Comics controller
 class ComicsController < ApplicationController
-  # before_action :authenticate_user!
   before_action :set_comic, only: %i[show]
 
   def index

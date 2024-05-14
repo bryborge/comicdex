@@ -30,3 +30,5 @@
 en:
   alerts:
     comic_not_found: "Comic not found."
+  notices:
+    user_updated: "User information updated successfully."

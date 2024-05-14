@@ -14,6 +14,8 @@
             <%= link_to "Dashboard", root_path, class: "nav-link" %>
           <% elsif current_page?(comics_path) %>
             <%= link_to "Explore", comics_path, class: "nav-link" %>
+          <% elsif current_page?(edit_user_path) %>
+            <%= link_to "Settings", edit_user_path, class: "nav-link" %>
           <% else %>
             <%= link_to "#{current_user.nickname}", user_path(current_user.id), class: "nav-link" %>
           <% end %>
@@ -39,6 +41,9 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <%= link_to "Your Profile", user_path(current_user.id), class: "dropdown-item" %>
+            </li>
+            <li class="list-group-item">
+              <%= link_to "Settings", edit_user_path(current_user.id), class: "dropdown-item" %>
             </li>
             <li class="list-group-item">
               <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>

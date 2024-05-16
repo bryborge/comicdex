@@ -1,8 +1,6 @@
 <div class="row align-items-start">
-  <div class="col">
+  <div class="col-md-9">
     <h2>Home</h2>
-
-    <p>This is static/dumb currently.</p>
 
     <article class="card mt-2 mb-2">
       <div class="card-body">
@@ -51,5 +49,16 @@
         <button class="btn btn-outline-secondary btn-sm">➕</button>
       </div>
     </article>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Explore comics</h5>
+        <h6 class="card-subtitle mb-2 text-body-secondary">Recommended</h6>
+
+        <%= link_to "Explore more →", comics_path, class: "card-link link-underline link-underline-opacity-0 link-underline-opacity-75-hover" %>
+      </div>
+    </div>
   </div>
 </div>

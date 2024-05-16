@@ -13,10 +13,11 @@ module Users
 
     def update
       @user = current_user
+
       if @user.update(user_params)
         redirect_to users_profile_path, notice: I18n.t('notices.user_updated')
       else
-        render :edit
+        render :edit, status: :unprocessable_entity
       end
     end
 

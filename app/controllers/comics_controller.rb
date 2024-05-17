@@ -8,7 +8,10 @@ class ComicsController < ApplicationController
     @comics = Comic.all
   end
 
-  def show; end
+  def show
+    @user = current_user
+    @user_comics = @user.comics.pluck(:id)
+  end
 
   private
 

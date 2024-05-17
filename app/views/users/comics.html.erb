@@ -1,0 +1,7 @@
+<h1><%= @user.nickname %>'s Comics</h1>
+
+<ul>
+  <% @comics.each do |comic| %>
+    <li><%= "#{comic.title} ##{comic.issue_number}" %></li>
+  <% end %>
+</ul>

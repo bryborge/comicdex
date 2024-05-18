@@ -1,7 +1,7 @@
-<h1><%= @user.nickname %>'s Comics</h1>
+<h2>Collection</h2>
 
 <ul>
   <% @comics.each do |comic| %>
-    <li><%= "#{comic.title} ##{comic.issue_number}" %></li>
+    <li><%= link_to "#{comic.title} ##{comic.issue_number}", comic_path(comic) %></li>
   <% end %>
 </ul>

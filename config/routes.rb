@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :user_comics, only: [:create]
+  resources :user_comics, only: %i[create destroy]
 
   root 'static_pages#home'
 

@@ -9,4 +9,12 @@ class UserComicsController < ApplicationController
 
     redirect_to comics_user_path(@user), notice: I18n.t('notices.comic_added_to_user_collection')
   end
+
+  def destroy
+    @user = User.find(params[:user_id])
+    @comic = Comic.find(params[:comic_id])
+    @user.comics.delete(@comic)
+
+    redirect_to comics_user_path(@user), notice: I18n.t('notices.comic_removed_from_user_collection')
+  end
 end

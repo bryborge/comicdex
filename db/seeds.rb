@@ -30,5 +30,3 @@ Comic.find_or_create_by!(title: 'Trees', issue_number: '2')
 Comic.find_or_create_by!(title: 'Trees', issue_number: '3')
 Comic.find_or_create_by!(title: 'Trees', issue_number: '4')
 Comic.find_or_create_by!(title: 'Trees', issue_number: '5')
-
-# u.users_comics.create(comic: c)

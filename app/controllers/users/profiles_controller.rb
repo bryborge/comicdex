@@ -10,11 +10,6 @@ module Users
       @comics = @user.comics
     end
 
-    # def comics
-    #   @user = current_user
-    #   @comics = @user.comics
-    # end
-
     def edit
       @user = current_user
     end

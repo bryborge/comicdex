@@ -1,7 +1,16 @@
 <h2>Collection</h2>
 
-<ul>
+<div class="row">
   <% @comics.each do |comic| %>
-    <li><%= link_to "#{comic.title} ##{comic.issue_number}", comic_path(comic) %></li>
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+      <%= link_to comic_path(comic), class: 'text-decoration-none' do %>
+        <div class="card">
+          <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= "#{comic.title} ##{comic.issue_number}" %></h5>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-</ul>
+</div>

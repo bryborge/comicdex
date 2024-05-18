@@ -1,17 +1,45 @@
-<h2><%= "#{@comic.title} ##{@comic.issue_number}" %></h2>
+<div class="row">
+  <div class="col-lg-8">
+    <h2><%= "#{@comic.title} ##{@comic.issue_number}" %></h2>
 
-<% if @user_comics.include?(@comic.id) %>
-  <button class="btn btn-primary" disabled>Collected</button>
+    <% if @user_comics.include?(@comic.id) %>
+      <%= form_with url: user_comic_path(current_user, @comic), method: :delete, local: true do %>
+        <%= hidden_field_tag :user_id, current_user.id %>
+        <%= hidden_field_tag :comic_id, @comic.id %>
+        <%= button_tag type: "submit", class: "btn btn-light btn-sm" do %>
+          <%= image_tag 'icons/circle-plus-fill.svg', height: "20" %> Collected
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= form_with url: user_comics_path, method: :post, local: true do %>
+        <%= hidden_field_tag :user_id, current_user.id %>
+        <%= hidden_field_tag :comic_id, @comic.id %>
+        <%= button_tag type: "submit", class: "btn btn-light btn-sm" do %>
+          <%= image_tag 'icons/circle-plus-nofill.svg', height: "20" %> Collect
+        <% end %>
+      <% end %>
+    <% end %>
 
-  <%= form_with url: user_comic_path(current_user, @comic), method: :delete, local: true do %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= hidden_field_tag :comic_id, @comic.id %>
-    <%= submit_tag "Remove", class: "btn btn-danger" %>
-  <% end %>
-<% else %>
-  <%= form_with url: user_comics_path, method: :post, local: true do %>
-    <%= hidden_field_tag :user_id, current_user.id %>
-    <%= hidden_field_tag :comic_id, @comic.id %>
-    <%= submit_tag "Collect", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
+    <hr />
+
+    <p><%= @comic.synopsis %></p>
+
+    <h3>Cover Price</h3>
+    <% if @comic.cover_price %>
+      <p>$<%= @comic.cover_price %></p>
+    <% else %>
+      <p>Unknown</p>
+    <% end %>
+
+    <h3>Cover Date</h3>
+    <% if @comic.cover_date %>
+      <p><%= @comic.cover_date.strftime("%B %Y") %></p>
+    <% else %>
+      <p>Unknown</p>
+    <% end %>
+  </div>
+
+  <div class="col-lg-4">
+    <%= image_tag 'no_photo_available.svg', alt: 'Image of generic comic book cover', width: '100%', height: '100%' %>
+  </div>
+</div>

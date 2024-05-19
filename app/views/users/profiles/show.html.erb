@@ -15,17 +15,28 @@
   <div class="col-lg-9">
     <div class="row row-cols-3">
       <div class="col">
-        <h3><%= link_to "Collected", comics_user_path(@user) %></h3>
-        <p><%= @comics.count %></p>
-
+      <div class="card">
+        <div class="card-body">
+          <h3><%= link_to "Collected", comics_user_path(@user) %></h3>
+          <p><%= @comics.count %></p>
+        </div>
+      </div>
       </div>
       <div class="col">
-        <h3>Read</h3>
-        <p>69</p>
+        <div class="card">
+          <div class="card-body">
+            <h3>Read</h3>
+            <p>69</p>
+          </div>
+        </div>
       </div>
       <div class="col">
-        <h3>Wish List</h3>
-        <p>420</p>
+        <div class="card">
+          <div class="card-body">
+            <h3>Wish List</h3>
+            <p>420</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>

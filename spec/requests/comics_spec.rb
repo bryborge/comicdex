@@ -41,6 +41,13 @@ RSpec.describe 'Comics' do
   end
 
   describe 'GET /comics/:id' do
+    context 'when the comic does not exist' do
+      it 'responds with a 302 status' do
+        get comic_path(id: -1)
+        expect(response).to have_http_status(:found)
+      end
+    end
+
     context 'when the comic exists' do
       it 'responds successfully with an HTTP 200 status code' do
         get comic_path(comic)
@@ -54,10 +61,21 @@ RSpec.describe 'Comics' do
       end
     end
 
-    context 'when the comic does not exist' do
-      it 'responds with a 302 status' do
-        get comic_path(id: -1)
-        expect(response).to have_http_status(:found)
+    context 'when the user has collected the comic' do
+      before do
+        UsersComic.create(user:, comic:) # Comic has been "collected" by the user
+      end
+
+      it 'displays the collected button' do
+        get comic_path(comic)
+        expect(response.body).to include('Collected')
+      end
+    end
+
+    context 'when the user has not collected the comic' do
+      it 'displays the collect button' do
+        get comic_path(comic)
+        expect(response.body).to include('Collect')
       end
     end
   end

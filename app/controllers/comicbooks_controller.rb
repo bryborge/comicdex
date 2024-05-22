@@ -4,11 +4,6 @@
 class ComicbooksController < ApplicationController
   before_action :set_comicbook, only: %i[show]
 
-  def index
-    @comics = Comicbook.includes(:series).all
-    @series = @comics.map(&:series).uniq
-  end
-
   def show
     @user = current_user
     @user_comics = @user.comicbooks.pluck(:id)
@@ -21,6 +16,6 @@ class ComicbooksController < ApplicationController
 
     return if @comic
 
-    redirect_to comicbooks_url, alert: I18n.t('alerts.comicbook_not_found')
+    redirect_to series_comicbooks_url, alert: I18n.t('alerts.comicbook_not_found')
   end
 end

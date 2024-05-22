@@ -25,5 +25,7 @@ Rails.application.routes.draw do
 
   root 'static_pages#home'
 
-  resources :comicbooks
+  resources :series do
+    resources :comicbooks
+  end
 end

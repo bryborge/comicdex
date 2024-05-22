@@ -1,16 +1,22 @@
 <h2>Collection</h2>
 
+<hr />
+
 <div class="row">
-  <% @comics.each do |comic| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-      <%= link_to comicbook_path(comic), class: 'text-decoration-none' do %>
-        <div class="card">
-          <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= "#{comic.title} ##{comic.issue_number}" %></h5>
+  <% if @series.blank? %>
+    <p>You haven't collected any comics yet!</p>
+  <% else %>
+    <% @comics.each do |comic| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+        <%= link_to series_comicbook_path(@series.id, comic), class: 'text-decoration-none' do %>
+          <div class="card">
+            <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "#{@series.name} ##{comic.issue_number}" %></h5>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
   <% end %>
 </div>

@@ -7,7 +7,8 @@ class UserComicbooksController < ApplicationController
     @comic = Comicbook.find(params[:comic_id])
     @user.comicbooks << @comic
 
-    redirect_to comicbook_path(@comic), notice: I18n.t('notices.comicbook_added_to_user_collection')
+    redirect_to series_comicbook_path(@comic.series_id, @comic),
+                notice: I18n.t('notices.comicbook_added_to_user_collection')
   end
 
   def destroy
@@ -15,6 +16,7 @@ class UserComicbooksController < ApplicationController
     @comic = Comicbook.find(params[:comic_id])
     @user.comicbooks.delete(@comic)
 
-    redirect_to comicbook_path(@comic), notice: I18n.t('notices.comicbook_removed_from_user_collection')
+    redirect_to series_comicbook_path(@comic.series_id, @comic),
+                notice: I18n.t('notices.comicbook_removed_from_user_collection')
   end
 end

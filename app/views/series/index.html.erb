@@ -1,0 +1,27 @@
+<h2>Comics by Series</h2>
+
+<p>
+  Here you can browse all the comicbooks in the database by series. In the future, you will be able to search and filter
+  on various comicbook attributes.  Stay tuned!
+</p>
+
+<hr />
+
+<div class="row">
+  <% if @all_series.any? %>
+    <% @all_series.each do |series| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+        <%= link_to series_path(series), class: 'text-decoration-none' do %>
+          <div class="card">
+            <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "#{series.name}" %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>There are no comicbook series to show :(</p>
+  <% end %>
+</div>

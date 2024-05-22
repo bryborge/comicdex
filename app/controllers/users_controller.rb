@@ -2,8 +2,8 @@
 
 # Users Controller
 class UsersController < ApplicationController
-  def comics
+  def comicbooks
     @user = current_user
-    @comics = @user.comics
+    @comics = @user.comicbooks
   end
 end

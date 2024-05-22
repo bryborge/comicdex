@@ -32,3 +32,5 @@ en:
     comic_not_found: "Comic not found."
   notices:
     user_updated: "User information updated successfully."
+    comic_added_to_user_collection: "Comic was added to your collection."
+    comic_removed_from_user_collection: "Comic was removed from your collection."

@@ -10,23 +10,31 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Comic.find_or_create_by!(title: 'Preacher', issue_number: '1')
-Comic.find_or_create_by!(title: 'Preacher', issue_number: '2')
-Comic.find_or_create_by!(title: 'Preacher', issue_number: '3')
-Comic.find_or_create_by!(title: 'Preacher', issue_number: '4')
-Comic.find_or_create_by!(title: 'Preacher', issue_number: '5')
-Comic.find_or_create_by!(title: 'Spider-Man', issue_number: '1')
-Comic.find_or_create_by!(title: 'Spider-Man', issue_number: '2')
-Comic.find_or_create_by!(title: 'Spider-Man', issue_number: '3')
-Comic.find_or_create_by!(title: 'Spider-Man', issue_number: '4')
-Comic.find_or_create_by!(title: 'Spider-Man', issue_number: '5')
+Comic.find_or_create_by!(
+  title: 'Preacher',
+  issue_number: '1',
+  synopsis: 'Jesse Custer, a reverend in a small Texas town, is possessed by the entity Genesis, which is the offspring of an angel and a demon. Genesis gives Jesse the Word of God and the ability to control people with his voice, but also causes his church to explode and kills its members. Jesse is the sole survivor and begins to hallucinate as he tries to understand the spirit that has entered him.',
+  cover_date: Date.new(1995, 4),
+  cover_price: '2.95'
+)
+Comic.find_or_create_by!(
+  title: 'Preacher',
+  issue_number: '2',
+  synopsis: 'Sheriff Root tells Agent Dinnings about the Saint of Killers.',
+  cover_date: Date.new(1995, 5),
+  cover_price: '2.50'
+)
+Comic.find_or_create_by!(
+  title: 'Preacher',
+  issue_number: '3',
+  cover_date: Date.new(1995, 6),
+  cover_price: '2.50'
+)
+
 Comic.find_or_create_by!(title: 'Saga', issue_number: '1')
 Comic.find_or_create_by!(title: 'Saga', issue_number: '2')
 Comic.find_or_create_by!(title: 'Saga', issue_number: '3')
-Comic.find_or_create_by!(title: 'Saga', issue_number: '4')
-Comic.find_or_create_by!(title: 'Saga', issue_number: '5')
+
 Comic.find_or_create_by!(title: 'Trees', issue_number: '1')
 Comic.find_or_create_by!(title: 'Trees', issue_number: '2')
 Comic.find_or_create_by!(title: 'Trees', issue_number: '3')
-Comic.find_or_create_by!(title: 'Trees', issue_number: '4')
-Comic.find_or_create_by!(title: 'Trees', issue_number: '5')

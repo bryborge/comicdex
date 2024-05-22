@@ -13,6 +13,10 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/environments/**/*'
 
+Layout/LineLength:
+  Exclude:
+    - 'db/seeds.rb'
+
 Rails/LexicallyScopedActionFilter:
   Exclude:
     - 'app/controllers/users/registrations_controller.rb'

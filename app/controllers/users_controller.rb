@@ -2,8 +2,15 @@
 
 # Users Controller
 class UsersController < ApplicationController
-  def comics
+  before_action :set_user, only: %i[collection]
+
+  def collection
+    @unique_series = @user.series
+  end
+
+  private
+
+  def set_user
     @user = current_user
-    @comics = @user.comics
   end
 end

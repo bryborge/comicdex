@@ -7,8 +7,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :users_comics, dependent: :destroy
-  has_many :comics, through: :users_comics
+  has_many :user_comicbooks, dependent: :destroy
+  has_many :comicbooks, through: :user_comicbooks
+  has_many :series, -> { distinct }, through: :comicbooks
 
   validates :nickname, presence: true
 end

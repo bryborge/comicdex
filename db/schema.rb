@@ -10,18 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_17_064951) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_22_022114) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comics", force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "cover_date"
-    t.string "cover_price"
+  create_table "comicbooks", force: :cascade do |t|
+    t.string "title"
+    t.string "format", null: false
     t.string "issue_number"
+    t.string "volume_number"
+    t.string "cover_price"
+    t.datetime "cover_date"
     t.text "synopsis"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "series_id", null: false
+    t.index ["series_id"], name: "index_comicbooks_on_series_id"
+  end
+
+  create_table "series", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "language"
+    t.text "synopsis"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_comicbooks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "comicbook_id", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comicbook_id"], name: "index_user_comicbooks_on_comicbook_id"
+    t.index ["user_id"], name: "index_user_comicbooks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,15 +61,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_17_064951) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  create_table "users_comics", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "comic_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comic_id"], name: "index_users_comics_on_comic_id"
-    t.index ["user_id"], name: "index_users_comics_on_user_id"
-  end
-
-  add_foreign_key "users_comics", "comics"
-  add_foreign_key "users_comics", "users"
+  add_foreign_key "comicbooks", "series"
+  add_foreign_key "user_comicbooks", "comicbooks"
+  add_foreign_key "user_comicbooks", "users"
 end

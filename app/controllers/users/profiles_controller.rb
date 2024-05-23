@@ -7,7 +7,7 @@ module Users
 
     def show
       @user = current_user
-      @comics = @user.comics
+      @comics = @user.comicbooks
     end
 
     def edit

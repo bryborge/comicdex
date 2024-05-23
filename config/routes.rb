@@ -17,13 +17,15 @@ Rails.application.routes.draw do
 
   resources :users do
     member do
-      get :comics
+      get :collection
     end
   end
 
-  resources :user_comics, only: %i[create destroy]
+  resources :user_comicbooks, only: %i[create destroy]
 
   root 'static_pages#home'
 
-  resources :comics
+  resources :series do
+    resources :comicbooks
+  end
 end

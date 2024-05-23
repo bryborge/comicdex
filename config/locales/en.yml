@@ -29,8 +29,9 @@
 
 en:
   alerts:
-    comic_not_found: "Comic not found."
+    comicbook_not_found: "Comicbook was not found."
+    series_not_found: "Series was not found."
   notices:
     user_updated: "User information updated successfully."
-    comic_added_to_user_collection: "Comic was added to your collection."
-    comic_removed_from_user_collection: "Comic was removed from your collection."
+    comicbook_added_to_user_collection: "Comicbook was added to your collection."
+    comicbook_removed_from_user_collection: "Comicbook was removed from your collection."

@@ -12,7 +12,7 @@
 
 preacher_series = Series.find_or_create_by!(name: 'Preacher', start_date: DateTime.new(1995, 1, 1), end_date: DateTime.new(2000, 1, 1), synopsis: 'Reverend Jesse Custer is just a Texas preacher-then at a service he bonds with a spirit force named Genesis that makes him be able to get people to do as he asks ... just by saying it. He teams up with his gun toting ex-lover Tulip and Booze hound Vampire named Cassidy.')
 saga_series     = Series.find_or_create_by!(name: 'Saga', start_date: DateTime.new(2012))
-trees_series    = Series.find_or_create_by!(name: 'Trees', start_date: DateTime.new(2014, 1, 1), end_date: DateTime.new(2020, 1, 1))
+trees_series    = Series.find_or_create_by!(name: 'Trees')
 
 Comicbook.find_or_create_by!(
   format: 'issue',

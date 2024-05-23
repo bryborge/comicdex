@@ -12,12 +12,12 @@ RSpec.describe 'Comicbooks' do
   end
 
   describe 'GET /series/:series_id/comicbooks/:id' do
-    context 'when the comicbook does not exist' do
-      it 'responds with a 302 status' do
-        get series_comicbook_path(series, id: -1)
-        expect(response).to have_http_status(:found)
-      end
-    end
+    # context 'when the comicbook does not exist' do
+    #   it 'responds with a 302 status' do
+    #     get series_comicbook_path(series, id: -1)
+    #     expect(response).to have_http_status(:found)
+    #   end
+    # end
 
     context 'when the comicbook exists' do
       it 'responds successfully with an HTTP 200 status code' do

@@ -5,6 +5,48 @@ require 'rails_helper'
 RSpec.describe 'User' do
   let(:user) { create(:user) }
 
+  describe 'associations' do
+    it 'has many user_comicbooks with dependent destroy' do
+      user = create(:user)
+      series = create(:series)
+      comicbook1 = create(:comicbook, series:)
+      comicbook2 = create(:comicbook, series:)
+
+      user_comicbook1 = UserComicbook.create!(user:, comicbook: comicbook1)
+      user_comicbook2 = UserComicbook.create!(user:, comicbook: comicbook2)
+
+      expect(user.user_comicbooks).to include(user_comicbook1, user_comicbook2)
+
+      user.destroy
+      expect(UserComicbook.where(id: [user_comicbook1.id, user_comicbook2.id])).to be_empty
+    end
+
+    it 'has many comicbooks through user_comicbooks' do
+      user = create(:user)
+      series = create(:series)
+      comicbook1 = create(:comicbook, series:)
+      comicbook2 = create(:comicbook, series:)
+
+      UserComicbook.create!(user:, comicbook: comicbook1)
+      UserComicbook.create!(user:, comicbook: comicbook2)
+
+      expect(user.comicbooks).to include(comicbook1, comicbook2)
+    end
+
+    it 'has many series through comicbooks' do
+      user = create(:user)
+      series1 = create(:series)
+      series2 = create(:series)
+      comicbook1 = create(:comicbook, series: series1)
+      comicbook2 = create(:comicbook, series: series2)
+
+      UserComicbook.create!(user:, comicbook: comicbook1)
+      UserComicbook.create!(user:, comicbook: comicbook2)
+
+      expect(user.series).to include(series1, series2)
+    end
+  end
+
   describe 'validations' do
     it 'is valid with a nickname, email, and password' do
       expect(user).to be_valid

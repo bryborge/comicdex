@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_22_022114) do
 
   create_table "series", force: :cascade do |t|
     t.string "name", null: false
-    t.datetime "start_date", null: false
+    t.datetime "start_date"
     t.datetime "end_date"
     t.string "language"
     t.text "synopsis"

@@ -19,9 +19,9 @@ class SeriesController < ApplicationController
   def set_series
     @series = Series.find_by(id: params[:id])
 
-    nil if @series
+    return if @series
 
-    # redirect_to series_url, alert: I18n.t('alerts.series_not_found')
+    redirect_to series_index_url, alert: I18n.t('alerts.series_not_found')
   end
 
   def set_user

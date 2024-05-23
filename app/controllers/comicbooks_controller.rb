@@ -14,9 +14,9 @@ class ComicbooksController < ApplicationController
   def set_comicbook
     @comic = Comicbook.find_by(id: params[:id])
 
-    nil if @comic
+    return if @comic
 
-    # redirect_to series_comicbooks_url, alert: I18n.t('alerts.comicbook_not_found')
+    redirect_to series_index_url, alert: I18n.t('alerts.comicbook_not_found')
   end
 
   def set_user

@@ -52,13 +52,13 @@ RSpec.describe 'Series' do
       end
     end
 
-    # context 'when series does not exist' do
-    #   it 'redirects to the index with an alert' do
-    #     get series_path(id: 'nonexistent')
-    #     expect(response).to redirect_to(series_index_path)
-    #     follow_redirect!
-    #     expect(response.body).to include(I18n.t('alerts.series_not_found'))
-    #   end
-    # end
+    context 'when series does not exist' do
+      it 'redirects to the index with an alert' do
+        get series_path(id: 'nonexistent')
+        expect(response).to redirect_to(series_index_path)
+        follow_redirect!
+        expect(response.body).to include(I18n.t('alerts.series_not_found'))
+      end
+    end
   end
 end

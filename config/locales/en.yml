@@ -30,6 +30,7 @@
 en:
   alerts:
     comicbook_not_found: "Comicbook was not found."
+    series_created: "Series was successfully created."
     series_not_found: "Series was not found."
   notices:
     user_updated: "User information updated successfully."

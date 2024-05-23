@@ -14,6 +14,20 @@ class SeriesController < ApplicationController
     @user_comics = @user.comicbooks.where(series: @series)
   end
 
+  def new
+    @series = Series.new
+  end
+
+  def create
+    @series = Series.new(series_params)
+
+    if @series.save
+      redirect_to @series, notice: I18n.t('alerts.series_created')
+    else
+      render :new
+    end
+  end
+
   private
 
   def set_series
@@ -26,5 +40,9 @@ class SeriesController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def series_params
+    params.require(:series).permit(:name, :start_date, :end_date)
   end
 end

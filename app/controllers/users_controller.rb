@@ -2,10 +2,15 @@
 
 # Users Controller
 class UsersController < ApplicationController
-  # TODO: Make this a different url endpoint.  Perhaps ... "users/:id/collection" and display collection by series?
-  def comicbooks
+  before_action :set_user, only: %i[collection]
+
+  def collection
+    @unique_series = @user.series
+  end
+
+  private
+
+  def set_user
     @user = current_user
-    @comics = @user.comicbooks
-    @series = Series.find @comics.first.series_id if @comics.first
   end
 end

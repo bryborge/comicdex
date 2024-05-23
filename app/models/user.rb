@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   has_many :user_comicbooks, dependent: :destroy
   has_many :comicbooks, through: :user_comicbooks
+  has_many :series, -> { distinct }, through: :comicbooks
 
   validates :nickname, presence: true
 end

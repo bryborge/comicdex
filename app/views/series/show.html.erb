@@ -9,11 +9,16 @@
 <div class="row">
   <% @comics.each do |comic| %>
     <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-      <%= link_to series_comicbook_path(@series, comic), class: 'text-decoration-none' do %>
+      <%= link_to series_comicbook_path(@series, comic), class: "text-decoration-none" do %>
         <div class="card">
           <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
           <div class="card-body">
             <h5 class="card-title"><%= "#{@series.name} ##{comic.issue_number}" %></h5>
+            <% if @user_comics.include?(comic) %>
+              <p class="text-success">Collected</p>
+            <% else %>
+              <p class="text-danger">Not Collected</p>
+            <% end %>
           </div>
         </div>
       <% end %>

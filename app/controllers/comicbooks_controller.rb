@@ -3,9 +3,9 @@
 # Comicbooks controller
 class ComicbooksController < ApplicationController
   before_action :set_comicbook, only: %i[show]
+  before_action :set_user, only: %i[show]
 
   def show
-    @user = current_user
     @user_comics = @user.comicbooks.pluck(:id)
   end
 
@@ -17,5 +17,9 @@ class ComicbooksController < ApplicationController
     return if @comic
 
     redirect_to series_comicbooks_url, alert: I18n.t('alerts.comicbook_not_found')
+  end
+
+  def set_user
+    @user = current_user
   end
 end

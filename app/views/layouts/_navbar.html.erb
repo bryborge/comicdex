@@ -12,12 +12,12 @@
         <li class="nav-item">
           <% if current_page?(root_path) %>
             <%= link_to "Dashboard", root_path, class: "nav-link" %>
-          <% elsif current_page?(series_index_path) %>
-            <%= link_to "Explore", series_index_path, class: "nav-link" %>
+          <% elsif current_page?(users_profile_path) || current_page?(collection_user_path(current_user)) %>
+            <%= link_to "#{current_user.nickname}", users_profile_path(current_user), class: "nav-link" %>
           <% elsif current_page?(edit_users_profile_path) || current_page?(edit_user_registration_path) %>
             <%= link_to 'Settings', edit_users_profile_path, class: "nav-link" %>
           <% else %>
-            <%= link_to "#{current_user.nickname}", users_profile_path(current_user), class: "nav-link" %>
+            <%= link_to "Explore", series_index_path, class: "nav-link" %>
           <% end %>
         </li>
       </ul>

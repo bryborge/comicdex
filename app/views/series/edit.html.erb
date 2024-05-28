@@ -1,0 +1,70 @@
+<%= render 'series/partials/navtabs' %>
+
+<h2 class="h3">General</h2>
+
+<ul class="list-group mb-4">
+  <li class="list-group-item">
+    <%= form_with(model: @series, local: true) do |form| %>
+      <% if @series.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+          <ul>
+          <% @series.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :start_date, class: "form-label" %>
+        <%= form.text_field :start_date, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :end_date, class: "form-label" %>
+        <%= form.text_field :end_date, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :language, class: "form-label" %>
+        <%= form.text_field :language, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :synopsis, class: "form-label" %>
+        <%= form.text_area :synopsis, class: "form-control" %>
+      </div>
+
+      <div class="d-flex">
+        <%= link_to "Cancel", series_path(@series), class: "btn btn-outline-secondary me-2", role: "button" %>
+        <div class="actions">
+          <%= form.submit "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </li>
+</ul>
+
+<h2 class="h3">Danger Zone</h2>
+
+<ul class="list-group mb-4">
+  <li class="list-group-item border-danger d-flex justify-content-between align-items-center">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Delete this series</div>
+      Once you delete an series, there is no going back. Please be certain.
+    </div>
+    <div class="flex-md-order-1 flex-order-2">
+      <%= button_to "Delete Series", series_path(@series),
+                    method: :delete,
+                    data: { turbo_confirm: "Are you sure you want to delete this series?" },
+                    class: "btn btn-danger", role: "button" %>
+    </div>
+  </li>
+</ul>

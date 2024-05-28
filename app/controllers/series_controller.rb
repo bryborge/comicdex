@@ -2,7 +2,7 @@
 
 # Series controller
 class SeriesController < ApplicationController
-  before_action :set_series, only: %i[show]
+  before_action :set_series, only: %i[show edit update destroy]
   before_action :set_user, only: %i[show]
 
   def index
@@ -18,14 +18,29 @@ class SeriesController < ApplicationController
     @series = Series.new
   end
 
+  def edit; end
+
   def create
     @series = Series.new(series_params)
 
     if @series.save
-      redirect_to @series, notice: I18n.t('alerts.series_created')
+      redirect_to @series, notice: I18n.t('notice.series_created')
     else
       render :new
     end
+  end
+
+  def update
+    if @series.update(series_params)
+      redirect_to @series, notice: I18n.t('notice.series_updated')
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @series.destroy
+    redirect_to series_index_url, notice: I18n.t('notice.series_deleted')
   end
 
   private
@@ -43,6 +58,6 @@ class SeriesController < ApplicationController
   end
 
   def series_params
-    params.require(:series).permit(:name, :start_date, :end_date)
+    params.require(:series).permit(:name, :start_date, :end_date, :language, :synopsis)
   end
 end

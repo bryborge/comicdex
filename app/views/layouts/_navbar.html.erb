@@ -24,6 +24,11 @@
 
       <!-- MAIN OPTIONS -->
       <ul class="navbar-nav ms-auto align-items-center d-flex flex-row">
+        <% if current_user.admin? %>
+          <li class="nav-item text-light">
+            Admin
+          </li>
+        <% end %>
         <li class="nav-item btn-group">
           <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUserOptions" aria-controls="offcanvasUserOptions">
             <%= image_tag "avatar.svg", alt: "blank avatar", height: "40" %>

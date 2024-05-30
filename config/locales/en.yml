@@ -38,3 +38,5 @@ en:
     user_updated: "User information updated successfully."
     comicbook_added_to_user_collection: "Comicbook was added to your collection."
     comicbook_removed_from_user_collection: "Comicbook was removed from your collection."
+  pundit:
+    not_authorized: "You are not authorized to perform this action."

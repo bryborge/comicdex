@@ -12,4 +12,8 @@ class User < ApplicationRecord
   has_many :series, -> { distinct }, through: :comicbooks
 
   validates :nickname, presence: true
+
+  def admin?
+    admin
+  end
 end

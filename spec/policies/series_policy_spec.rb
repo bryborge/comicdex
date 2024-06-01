@@ -2,28 +2,30 @@
 
 require 'rails_helper'
 
-# RSpec.describe SeriesPolicy, type: :policy do
-#   subject { described_class }
+RSpec.describe SeriesPolicy, type: :policy do
+  admin_series { described_class }
 
-#   let(:user) { User.new }
+  let(:user) { create(:user) }
+  let(:admin) { create(:user, admin: true) }
+  let(:series) { create(:series) }
 
-#   permissions '.scope' do
-#     pending "add some examples to (or delete) #{__FILE__}"
-#   end
+  describe 'for an admin user' do
+    it 'grants access if user is an admin' do
+      expect(admin_series.new(admin, series)).to be_create
+    end
 
-#   permissions :show? do
-#     pending "add some examples to (or delete) #{__FILE__}"
-#   end
+    it 'denies access if user is not an admin' do
+      expect(admin_series.new(admin, series)).to be_update
+    end
+  end
 
-#   permissions :create? do
-#     pending "add some examples to (or delete) #{__FILE__}"
-#   end
+  describe 'for a non-admin user' do
+    it 'grants access if user is an admin' do
+      expect(admin_series.new(user, series)).not_to be_create
+    end
 
-#   permissions :update? do
-#     pending "add some examples to (or delete) #{__FILE__}"
-#   end
-
-#   permissions :destroy? do
-#     pending "add some examples to (or delete) #{__FILE__}"
-#   end
-# end
+    it 'denies access if user is not an admin' do
+      expect(admin_series.new(user, series)).not_to be_update
+    end
+  end
+end

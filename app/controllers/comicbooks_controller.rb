@@ -2,12 +2,21 @@
 
 # Comicbooks controller
 class ComicbooksController < ApplicationController
-  before_action :set_comicbook, only: %i[show]
-  before_action :set_user, only: %i[show]
+  before_action :set_comicbook, only: %i[show edit]
+  before_action :set_user, only: %i[show edit]
 
   def show
     @series      = @comic.series
     @user_comics = @user.comicbooks.pluck(:id)
+  end
+
+  def new
+    @series = Series.find_by(id: params[:series_id])
+    # @comic = @series.comicbooks.build
+  end
+
+  def edit
+    @series = @comic.series
   end
 
   private

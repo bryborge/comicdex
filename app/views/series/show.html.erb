@@ -6,6 +6,12 @@
   <p><%= @series.synopsis %></p>
 <% end %>
 
+<% if @user.admin? %>
+  <div class="d-flex">
+    <%= link_to "Add +", new_series_comicbook_path(@series.id), class: "btn btn-success", role: "button" %>
+  </div>
+<% end %>
+
 <hr />
 
 <div class="row">

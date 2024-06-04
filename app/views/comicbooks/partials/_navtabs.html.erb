@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs mb-4">
+  <li class="nav-item">
+    <%= link_to "Details", series_comicbook_path(@series.id, @comic.id), class: ["nav-link", ("active" if current_page?(series_comicbook_path(@series.id, @comic.id)))] %>
+  </li>
+  <% if @user.admin? %>
+    <li class="nav-item">
+      <%= link_to "Manage", edit_series_comicbook_path(@series, @comic), class: ["nav-link", ("active" if current_page?(edit_series_comicbook_path(@series, @comic)))] %>
+    </li>
+  <% end %>
+</ul>

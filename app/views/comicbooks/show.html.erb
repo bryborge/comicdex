@@ -1,11 +1,4 @@
-<ul class="nav nav-tabs mb-4">
-  <li class="nav-item">
-    <%= link_to "Details", series_comicbook_path(@series.id, @comic.id), class: ["nav-link", ("active" if current_page?(series_comicbook_path(@series.id, @comic.id)))] %>
-  </li>
-  <li class="nav-item">
-
-  </li>
-</ul>
+<%= render 'comicbooks/partials/navtabs' %>
 
 <div class="row">
   <div class="col-lg-8">

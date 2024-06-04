@@ -3,29 +3,35 @@
 require 'rails_helper'
 
 RSpec.describe SeriesPolicy, type: :policy do
-  admin_series { described_class }
-
   let(:user) { create(:user) }
   let(:admin) { create(:user, admin: true) }
   let(:series) { create(:series) }
 
-  describe 'for an admin user' do
-    it 'grants access if user is an admin' do
-      expect(admin_series.new(admin, series)).to be_create
+  shared_examples 'admin access' do
+    it 'grants access to create a series' do
+      expect(described_class.new(admin, series)).to be_create
     end
 
-    it 'denies access if user is not an admin' do
-      expect(admin_series.new(admin, series)).to be_update
+    it 'grants access to update a series' do
+      expect(described_class.new(admin, series)).to be_update
     end
   end
 
-  describe 'for a non-admin user' do
-    it 'grants access if user is an admin' do
-      expect(admin_series.new(user, series)).not_to be_create
+  shared_examples 'non-admin access' do
+    it 'denies access to create a series' do
+      expect(described_class.new(user, series)).not_to be_create
     end
 
-    it 'denies access if user is not an admin' do
-      expect(admin_series.new(user, series)).not_to be_update
+    it 'denies access to update a series' do
+      expect(described_class.new(user, series)).not_to be_update
     end
+  end
+
+  describe 'for an admin user' do
+    it_behaves_like 'admin access'
+  end
+
+  describe 'for a non-admin user' do
+    it_behaves_like 'non-admin access'
   end
 end

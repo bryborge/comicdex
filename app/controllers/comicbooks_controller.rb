@@ -6,7 +6,7 @@ class ComicbooksController < ApplicationController
   before_action :set_user, only: %i[show]
 
   def show
-    @series = @comic.series
+    @series      = @comic.series
     @user_comics = @user.comicbooks.pluck(:id)
   end
 

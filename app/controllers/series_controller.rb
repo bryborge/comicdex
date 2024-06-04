@@ -45,6 +45,8 @@ class SeriesController < ApplicationController
   end
 
   def destroy
+    authorize @series
+
     @series.destroy
     redirect_to series_index_url, notice: I18n.t('notices.series_deleted')
   end

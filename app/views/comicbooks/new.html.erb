@@ -1,0 +1,57 @@
+<h2><%= "#{@series.name} - New Comic" %></h2>
+
+<%= form_with(model: [@series, @comic], local: true) do |form| %>
+  <% if @comic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+
+      <ul>
+        <% @comic.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :format, class: "form-label" %>
+    <%= form.text_field :format, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :issue_number, class: "form-label" %>
+    <%= form.text_field :issue_number, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :volume_number, class: "form-label" %>
+    <%= form.text_field :volume_number, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cover_price, class: "form-label" %>
+    <%= form.text_field :cover_price, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :cover_date, class: "form-label" %>
+    <%= form.text_field :cover_date, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :synopsis, class: "form-label" %>
+    <%= form.text_area :synopsis, class: "form-control" %>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to "Cancel", series_path(@series), class: "btn btn-outline-secondary me-2", role: "button" %>
+    <div class="actions">
+      <%= form.submit "Create", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

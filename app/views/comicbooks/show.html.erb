@@ -1,3 +1,5 @@
+<%= render 'comicbooks/partials/navtabs' %>
+
 <div class="row">
   <div class="col-lg-8">
     <h2><%= "#{@comic.series.name} ##{@comic.issue_number}" %></h2>
@@ -25,7 +27,7 @@
     <p><%= @comic.synopsis %></p>
 
     <h3>Cover Price</h3>
-    <% if @comic.cover_price %>
+    <% if @comic.cover_price && @comic.cover_price != "" %>
       <p>$<%= @comic.cover_price %></p>
     <% else %>
       <p>Unknown</p>
@@ -41,5 +43,6 @@
 
   <div class="col-lg-4">
     <%= image_tag 'no_photo_available.svg', alt: 'Image of generic comic book cover', width: '100%', height: '100%' %>
+    <%= link_to "Back to Series", series_path(@series), class: "btn btn-primary", role: "button" %>
   </div>
 </div>

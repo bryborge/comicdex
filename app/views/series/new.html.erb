@@ -1,0 +1,47 @@
+<h2>New Comic Series</h2>
+
+<%= form_with(model: @series, local: true) do |form| %>
+  <% if @series.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@series.errors.count, "error") %> prohibited this series from being saved:</h2>
+
+      <ul>
+        <% @series.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :start_date, class: "form-label" %>
+    <%= form.text_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :end_date, class: "form-label" %>
+    <%= form.text_field :end_date, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :language, class: "form-label" %>
+    <%= form.text_field :language, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :synopsis, class: "form-label" %>
+    <%= form.text_area :synopsis, class: "form-control" %>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to "Cancel", series_index_path, class: "btn btn-outline-secondary me-2", role: "button" %>
+    <div class="actions">
+      <%= form.submit "Create", class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

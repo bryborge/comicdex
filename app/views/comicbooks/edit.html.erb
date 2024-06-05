@@ -1,0 +1,80 @@
+<%= render 'comicbooks/partials/navtabs' %>
+
+<h2 class="h3">General</h2>
+
+<ul class="list-group mb-4">
+  <li class="list-group-item">
+    <%= form_with(model: [@series, @comic], local: true) do |form| %>
+      <% if @comic.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comic.errors.count, "error") %> prohibited this comic from being saved:</h2>
+
+          <ul>
+          <% @comic.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :format, class: "form-label" %>
+        <%= form.text_field :format, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :issue_number, class: "form-label" %>
+        <%= form.text_field :issue_number, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :volume_number, class: "form-label" %>
+        <%= form.text_field :volume_number, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cover_price, class: "form-label" %>
+        <%= form.text_field :cover_price, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :cover_date, class: "form-label" %>
+        <%= form.text_field :cover_date, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :synopsis, class: "form-label" %>
+        <%= form.text_area :synopsis, class: "form-control" %>
+      </div>
+
+      <div class="d-flex">
+        <%= link_to "Cancel", series_comicbook_path(@series, @comic), class: "btn btn-outline-secondary me-2", role: "button" %>
+        <div class="actions">
+          <%= form.submit "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </li>
+</ul>
+
+<h2 class="h3">Danger Zone</h2>
+
+<ul class="list-group mb-4">
+  <li class="list-group-item border-danger d-flex justify-content-between align-items-center">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Delete this comic</div>
+      Once you delete an comicbook, there is no going back. Please be certain.
+    </div>
+    <div class="flex-md-order-1 flex-order-2">
+      <%= button_to "Delete Comic", series_comicbook_path(@series, @comic),
+                    method: :delete,
+                    data: { turbo_confirm: "Are you sure you want to delete this comic?" },
+                    class: "btn btn-danger", role: "button" %>
+    </div>
+  </li>
+</ul>

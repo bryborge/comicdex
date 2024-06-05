@@ -1,0 +1,10 @@
+<ul class="nav nav-tabs mb-4">
+  <li class="nav-item">
+    <%= link_to "Details", series_path(@series), class: ["nav-link", ("active" if current_page?(series_path(@series)))] %>
+  </li>
+  <% if @user.admin? %>
+    <li class="nav-item">
+      <%= link_to "Manage", edit_series_path(@series), class: ["nav-link", ("active" if current_page?(edit_series_path(@series)))] %>
+    </li>
+  <% end %>
+</ul>

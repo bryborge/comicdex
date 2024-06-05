@@ -1,27 +1,39 @@
-<h2><%= @series.name %></h2>
+<%= render 'series/partials/navtabs' %>
+
+<h2><%= @series.name %> (Series)</h2>
 
 <% if @series.synopsis %>
   <p><%= @series.synopsis %></p>
 <% end %>
 
+<% if @user.admin? %>
+  <div class="d-flex">
+    <%= link_to "Add +", new_series_comicbook_path(@series.id), class: "btn btn-success", role: "button" %>
+  </div>
+<% end %>
+
 <hr />
 
 <div class="row">
-  <% @comics.each do |comic| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
-      <%= link_to series_comicbook_path(@series, comic), class: "text-decoration-none" do %>
-        <div class="card">
-          <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
-          <div class="card-body">
-            <h5 class="card-title"><%= "#{@series.name} ##{comic.issue_number}" %></h5>
-            <% if @user_comics.include?(comic) %>
-              <p class="text-success">Collected</p>
-            <% else %>
-              <p class="text-danger">Not Collected</p>
-            <% end %>
+  <% if @comics.any? %>
+    <% @comics.each do |comic| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4">
+        <%= link_to series_comicbook_path(@series, comic), class: "text-decoration-none" do %>
+          <div class="card">
+            <%= image_tag 'no_photo_available.svg', class: "card-img-top" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= "#{@series.name} ##{comic.issue_number}" %></h5>
+              <% if @user_comics.include?(comic) %>
+                <p class="text-success">Collected</p>
+              <% else %>
+                <p class="text-danger">Not Collected</p>
+              <% end %>
+            </div>
           </div>
-        </div>
-      <% end %>
-    </div>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <p>No comics in this series.</p>
   <% end %>
 </div>

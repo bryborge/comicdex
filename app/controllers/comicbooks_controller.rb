@@ -3,6 +3,7 @@
 # Comicbooks controller
 class ComicbooksController < ApplicationController
   before_action :set_comicbook, only: %i[show edit update destroy]
+  before_action :set_series
   before_action :set_user, only: %i[show edit update destroy]
 
   def show
@@ -11,8 +12,7 @@ class ComicbooksController < ApplicationController
   end
 
   def new
-    @series = Series.find_by(id: params[:series_id])
-    @comic  = @series.comicbooks.build
+    @comic = @series.comicbooks.build
     authorize @comic
   end
 
@@ -22,7 +22,6 @@ class ComicbooksController < ApplicationController
   end
 
   def create
-    @series = Series.find_by(id: params[:series_id])
     @comic  = @series.comicbooks.build(comicbook_params)
 
     authorize @comic
@@ -38,7 +37,7 @@ class ComicbooksController < ApplicationController
     authorize @comic
 
     if @comic.update(comicbook_params)
-      redirect_to series_comicbook_path(@comic.series_id, @comic), notice: I18n.t('notices.comicbook_updated')
+      redirect_to series_comicbook_path(@series, @comic), notice: I18n.t('notices.comicbook_updated')
     else
       render :edit
     end
@@ -59,6 +58,10 @@ class ComicbooksController < ApplicationController
     return if @comic
 
     redirect_to series_index_url, alert: I18n.t('alerts.comicbook_not_found')
+  end
+
+  def set_series
+    @series = Series.find_by(id: params[:series_id])
   end
 
   def set_user

@@ -36,6 +36,9 @@ en:
     series_updated: "Series was successfully updated."
     series_deleted: "Series was successfully deleted."
     user_updated: "User information updated successfully."
+    comicbook_created: "Comicbook was successfully created."
+    comicbook_updated: "Comicbook was successfully updated."
+    comicbook_deleted: "Comicbook was successfully deleted."
     comicbook_added_to_user_collection: "Comicbook was added to your collection."
     comicbook_removed_from_user_collection: "Comicbook was removed from your collection."
   pundit:

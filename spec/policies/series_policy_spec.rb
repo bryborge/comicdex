@@ -15,6 +15,10 @@ RSpec.describe SeriesPolicy, type: :policy do
     it 'grants access to update a series' do
       expect(described_class.new(admin, series)).to be_update
     end
+
+    it 'grants access to delete a series' do
+      expect(described_class.new(admin, series)).to be_destroy
+    end
   end
 
   shared_examples 'non-admin access' do
@@ -24,6 +28,10 @@ RSpec.describe SeriesPolicy, type: :policy do
 
     it 'denies access to update a series' do
       expect(described_class.new(user, series)).not_to be_update
+    end
+
+    it 'denies access to delete a series' do
+      expect(described_class.new(user, series)).not_to be_destroy
     end
   end
 

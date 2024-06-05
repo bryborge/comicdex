@@ -27,7 +27,7 @@
     <p><%= @comic.synopsis %></p>
 
     <h3>Cover Price</h3>
-    <% if @comic.cover_price %>
+    <% if @comic.cover_price && @comic.cover_price != "" %>
       <p>$<%= @comic.cover_price %></p>
     <% else %>
       <p>Unknown</p>

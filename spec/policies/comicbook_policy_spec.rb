@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe ComicbooksPolicy, type: :policy do
+RSpec.describe ComicbookPolicy, type: :policy do
   let(:user) { create(:user) }
   let(:admin) { create(:user, admin: true) }
   let(:series) { create(:series) }
@@ -16,6 +16,10 @@ RSpec.describe ComicbooksPolicy, type: :policy do
     it 'grants access to update a comicbook' do
       expect(described_class.new(admin, comicbook)).to be_update
     end
+
+    it 'grants access to delete a comicbook' do
+      expect(described_class.new(admin, comicbook)).to be_destroy
+    end
   end
 
   shared_examples 'non-admin access' do
@@ -25,6 +29,10 @@ RSpec.describe ComicbooksPolicy, type: :policy do
 
     it 'denies access to update a comicbook' do
       expect(described_class.new(user, comicbook)).not_to be_update
+    end
+
+    it 'denies access to delete a comicbook' do
+      expect(described_class.new(user, comicbook)).not_to be_destroy
     end
   end
 

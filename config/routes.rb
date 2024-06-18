@@ -11,6 +11,11 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
 
+  root 'static_pages#home'
+
+  get 'setup', to: 'setup#new', as: 'setup'
+  post 'setup', to: 'setup#create'
+
   namespace :users do
     resource :profile, only: %i[show edit update]
   end
@@ -22,8 +27,6 @@ Rails.application.routes.draw do
   end
 
   resources :user_comicbooks, only: %i[create destroy]
-
-  root 'static_pages#home'
 
   resources :series do
     resources :comicbooks

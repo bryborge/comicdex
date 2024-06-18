@@ -13,8 +13,18 @@
   <body>
     <%= render "layouts/navbar" if user_signed_in? %>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <div class="mt-4 mb-4">
+        <% if notice %>
+          <div class="alert alert-primary" role="alert">
+            <%= notice %>
+          </div>
+        <% end %>
+        <% if alert %>
+          <div class="alert alert-warning" role="alert">
+            <%= alert %>
+          </div>
+        <% end %>
+      </div>
 
       <%= yield %>
     </div>

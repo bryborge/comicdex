@@ -1,0 +1,58 @@
+<h1>First Time Setup</h1>
+
+<p>
+  Welcome to Comicdex! There are currently no users in the database. In order to continue, we need to set up a web
+  application admin user.
+</p>
+
+<hr />
+
+<div class="d-flex justify-content-center align-items-center">
+  <div class="col-md-4">
+    <h2 class="d-flex justify-content-center align-items-center">Create Admin User</h2>
+    <div class="d-flex justify-content-center align-items-center">
+      <%= image_tag "logo.svg", alt: "Comicdex logo", height: "100" %>
+    </div>
+    <%= form_with(model: @user, url: setup_path, local: true) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-floating">
+        <%= f.email_field :email, autocomplete: "email", class: "form-control", id: "floatingEmail", placeholder: "name@example.com" %>
+        <%= f.label :email, for: "floatingEmail" %>
+      </div>
+
+      <div class="form-floating">
+        <%= f.text_field :nickname, autocomplete: "nickname", class: "form-control", id: "floatingNickname", placeholder: "nickname" %>
+        <%= f.label :nickname, for: "floatingNickname" %>
+      </div>
+
+      <div class="my-3">
+        <div class="form-floating">
+          <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "floatingPassword", placeholder: "password" %>
+          <%= f.label :password, for: "floatingPassword" %>
+        </div>
+
+        <div class="form-floating">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", id: "floatingConfirmPassword", placeholder: "password" %>
+          <%= f.label :password_confirmation, for: "floatingConfirmPassword" %>
+          <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Create Admin", class: "btn btn-primary w-100 py-2" %>
+      </div>
+    <% end %>
+  </div>
+</div>

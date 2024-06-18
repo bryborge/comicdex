@@ -32,6 +32,7 @@ en:
     comicbook_not_found: "Comicbook was not found."
     series_not_found: "Series was not found."
   notices:
+    admin_user_created: "Admin user created successfully."
     series_created: "Series was successfully created."
     series_updated: "Series was successfully updated."
     series_deleted: "Series was successfully deleted."

@@ -16,11 +16,4 @@
   </div>
 </div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var firstTimeModal = new bootstrap.Modal(document.getElementById('firstTimeModal'), {
-      keyboard: false
-    });
-    firstTimeModal.show();
-  });
-</script>
+<%= javascript_include_tag('firstTimeModal.js')  %>

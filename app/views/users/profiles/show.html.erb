@@ -1,6 +1,11 @@
 <div class="row g-0">
   <div class="col-lg-3">
-    <%= image_tag "avatar.svg", alt: "blank avatar", height: "260" %>
+    <% if @user.avatar.attached? %>
+      <%= image_tag @user.avatar, alt: "user avatar", class: "rounded-circle", height: "260" %>
+    <% else %>
+      <%= image_tag "blank_avatar.svg", alt: "blank avatar", height: "260" %>
+    <% end %>
+
     <h2><%= current_user.nickname %></h2>
     <p>Joined <%= current_user.created_at.strftime("%B, %Y") %></p>
   </div>

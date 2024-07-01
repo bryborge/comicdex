@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :comicbooks, through: :user_comicbooks
   has_many :series, -> { distinct }, through: :comicbooks
 
+  has_one_attached :avatar
+
   validates :nickname, presence: true
 
   def admin?

@@ -24,6 +24,10 @@
 
     <hr />
 
+    <% if @comic.title %>
+      <h3><%= @comic.title %></h3>
+    <% end %>
+
     <p><%= @comic.synopsis %></p>
 
     <h3>Cover Price</h3>

@@ -17,6 +17,17 @@
         </div>
       <% end %>
 
+      <% if @user.avatar.attached? %>
+        <%= image_tag @user.avatar, alt: "user avatar", class: "rounded-circle", height: "260" %>
+      <% else %>
+        <%= image_tag "blank_avatar.svg", alt: "blank avatar", height: "260" %>
+      <% end %>
+
+      <div class="mb-3">
+        <%= f.label :avatar, "Update Avatar", class: "form-label" %>
+        <%= f.file_field :avatar, class: "form-control" %>
+      </div>
+
       <div class="mb-3">
         <%= f.label :nickname, class: "form-label" %>
         <%= f.text_field :nickname, class: "form-control" %>

@@ -25,10 +25,13 @@ Rails/LexicallyScopedActionFilter:
 Metrics/AbcSize:
   Exclude:
     - 'app/controllers/users/passwords_controller.rb'
+    - 'db/migrate/**/*'
+
 Metrics/MethodLength:
   Exclude:
-    - 'app/lib/collection_properties.rb'
     - 'app/controllers/users/passwords_controller.rb'
+    - 'app/lib/collection_properties.rb'
+    - 'db/migrate/**/*'
 
 RSpec/ExampleLength:
   Exclude:

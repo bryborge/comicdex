@@ -17,6 +17,19 @@
         </div>
       <% end %>
 
+      <div>
+        <% if @series.series_image.attached? %>
+          <%= image_tag @series.series_image, height: "260" %>
+        <% else %>
+          <%= image_tag 'no_photo_available.svg', height: "260" %>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :series_image, class: "form-label" %>
+        <%= form.file_field :series_image, class: "form-control" %>
+      </div>
+
       <div class="mb-3">
         <%= form.label :name, class: "form-label" %>
         <%= form.text_field :name, class: "form-control" %>
@@ -58,7 +71,7 @@
   <li class="list-group-item border-danger d-flex justify-content-between align-items-center">
     <div class="ms-2 me-auto">
       <div class="fw-bold">Delete this series</div>
-      Once you delete an series, there is no going back. Please be certain.
+      Once you delete a series, there is no going back. Please be certain.
     </div>
     <div class="flex-md-order-1 flex-order-2">
       <%= button_to "Delete Series", series_path(@series),

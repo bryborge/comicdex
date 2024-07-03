@@ -1,5 +1,5 @@
 <div class="row g-0">
-  <div class="col-lg-3">
+  <div class="col-xl-3 col-lg-4">
     <% if @user.avatar.attached? %>
       <%= image_tag @user.avatar, alt: "user avatar", class: "rounded-circle", height: "260" %>
     <% else %>
@@ -10,8 +10,8 @@
     <p>Joined <%= current_user.created_at.strftime("%B, %Y") %></p>
   </div>
 
-  <div class="col-lg-9">
-    <div class="row row-cols-3">
+  <div class="col-xl-9 col-lg-8">
+    <div class="row row-cols-2">
       <div class="col">
       <div class="card">
         <div class="card-body">
@@ -19,14 +19,6 @@
           <p><%= @comics.count %></p>
         </div>
       </div>
-      </div>
-      <div class="col">
-        <div class="card">
-          <div class="card-body">
-            <h3>Read</h3>
-            <p>Coming Soon!</p>
-          </div>
-        </div>
       </div>
       <div class="col">
         <div class="card">

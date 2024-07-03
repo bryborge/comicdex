@@ -70,6 +70,6 @@ class ComicbooksController < ApplicationController
 
   def comicbook_params
     params.require(:comicbook).permit(:title, :format, :issue_number, :volume_number, :cover_price, :cover_date,
-                                      :synopsis)
+                                      :synopsis, :cover_image)
   end
 end

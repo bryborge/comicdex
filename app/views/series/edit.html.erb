@@ -17,6 +17,19 @@
         </div>
       <% end %>
 
+      <div>
+        <% if @series.series_image.attached? %>
+          <%= image_tag @series.series_image, height: "260" %>
+        <% else %>
+          <%= image_tag 'no_photo_available.svg', height: "260" %>
+        <% end %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :series_image, class: "form-label" %>
+        <%= form.file_field :series_image, class: "form-control" %>
+      </div>
+
       <div class="mb-3">
         <%= form.label :name, class: "form-label" %>
         <%= form.text_field :name, class: "form-control" %>

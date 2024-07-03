@@ -66,6 +66,6 @@ class SeriesController < ApplicationController
   end
 
   def series_params
-    params.require(:series).permit(:name, :start_date, :end_date, :language, :synopsis)
+    params.require(:series).permit(:name, :start_date, :end_date, :language, :synopsis, :series_image)
   end
 end

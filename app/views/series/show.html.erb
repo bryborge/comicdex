@@ -9,7 +9,6 @@
 <% if @user.admin? %>
   <div class="d-flex">
     <%= link_to "Add +", new_series_comicbook_path(@series.id), class: "btn btn-success", role: "button" %>
-    <%= link_to "Back", series_index_path, class: "btn btn-primary", role: "button" %>
   </div>
 <% end %>
 

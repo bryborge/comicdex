@@ -44,9 +44,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_031801) do
 
   create_table "comicbooks", force: :cascade do |t|
     t.string "title"
-    t.string "format", null: false
-    t.string "issue_number"
-    t.string "volume_number"
+    t.integer "format", default: 0, null: false
+    t.string "entity_number", null: false
     t.string "cover_price"
     t.datetime "cover_date"
     t.text "synopsis"

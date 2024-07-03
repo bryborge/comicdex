@@ -9,5 +9,7 @@ class Comicbook < ApplicationRecord
 
   belongs_to :series
 
-  validates :format, presence: true
+  enum format: { issue: 0, volume: 1 }
+
+  validates :entity_number, :format, presence: true
 end

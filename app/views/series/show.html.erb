@@ -28,7 +28,13 @@
               <% end %>
             </div>
             <div class="card-body">
-              <h5 class="card-title"><%= "#{@series.name} ##{comic.issue_number}" %></h5>
+              <h5 class="card-title">
+                <% if comic.format == "issue" %>
+                  <%= "#{@series.name} ##{comic.entity_number}" %>
+                <% else %>
+                  <%= "#{@series.name} vol. #{comic.entity_number}" %>
+                <% end %>
+              </h5>
               <% if @user_comics.include?(comic) %>
                 <p class="text-success">Collected</p>
               <% else %>

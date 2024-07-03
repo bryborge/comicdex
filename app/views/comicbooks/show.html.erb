@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-lg-8">
-    <h2><%= "#{@comic.series.name} ##{@comic.issue_number}" %></h2>
+    <h2><%= "#{@comic.series.name} ##{@comic.entity_number}" %></h2>
 
     <% if @user_comics.include?(@comic.id) %>
       <%= form_with url: user_comicbook_path(@user, @comic), method: :delete, local: true do %>

@@ -20,17 +20,12 @@
 
   <div class="mb-3">
     <%= form.label :format, class: "form-label" %>
-    <%= form.text_field :format, class: "form-control" %>
+    <%= form.collection_select :format, Comicbook.formats.keys, :to_s, :humanize, {}, { class: "form-control" } %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :issue_number, class: "form-label" %>
-    <%= form.text_field :issue_number, class: "form-control" %>
-  </div>
-
-  <div class="mb-3">
-    <%= form.label :volume_number, class: "form-label" %>
-    <%= form.text_field :volume_number, class: "form-control" %>
+    <%= form.label :entity_number, class: "form-label" %>
+    <%= form.text_field :entity_number, class: "form-control" %>
   </div>
 
   <div class="mb-3">

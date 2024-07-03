@@ -2,6 +2,7 @@
 
 FactoryBot.define do
   factory :comicbook do
-    format { Faker::Lorem.word }
+    format { 'issue' }
+    entity_number { Faker::Alphanumeric.alpha(number: 3) }
   end
 end

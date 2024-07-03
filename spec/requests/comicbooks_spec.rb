@@ -9,7 +9,7 @@ RSpec.describe 'Comicbooks' do
   let!(:comicbook) { create(:comicbook, series_id: series.id) }
   let(:valid_attributes) { attributes_for(:comicbook).merge(series_id: series.id) }
   let(:invalid_attributes) do
-    { title: '', format: nil, issue_number: '', volume_number: '', cover_price: '', cover_date: '', synopsis: '' }
+    { title: '', format: nil, entity_number: '', cover_price: '', cover_date: '', synopsis: '' }
   end
 
   describe 'GET /series/:series_id/comicbooks/:id' do

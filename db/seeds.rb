@@ -15,55 +15,55 @@ saga_series     = Series.find_or_create_by!(name: 'Saga', start_date: DateTime.n
 trees_series    = Series.find_or_create_by!(name: 'Trees', start_date: DateTime.new(2014, 5, 1))
 
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: preacher_series.id,
-  issue_number: '1',
+  entity_number: '1',
   synopsis: 'Jesse Custer, a reverend in a small Texas town, is possessed by the entity Genesis, which is the offspring of an angel and a demon. Genesis gives Jesse the Word of God and the ability to control people with his voice, but also causes his church to explode and kills its members. Jesse is the sole survivor and begins to hallucinate as he tries to understand the spirit that has entered him.',
   cover_date: Date.new(1995, 4),
   cover_price: '2.95'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: preacher_series.id,
-  issue_number: '2',
+  entity_number: '2',
   synopsis: 'Sheriff Root tells Agent Dinnings about the Saint of Killers.',
   cover_date: Date.new(1995, 5),
   cover_price: '2.50'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: preacher_series.id,
-  issue_number: '3',
+  entity_number: '3',
   cover_date: Date.new(1995, 6),
   cover_price: '2.50'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: saga_series.id,
-  issue_number: '1'
+  entity_number: '1'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: saga_series.id,
-  issue_number: '2'
+  entity_number: '2'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: saga_series.id,
-  issue_number: '3'
+  entity_number: '3'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: trees_series.id,
-  issue_number: '1'
+  entity_number: '1'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: trees_series.id,
-  issue_number: '2'
+  entity_number: '2'
 )
 Comicbook.find_or_create_by!(
-  format: 'issue',
+  format: 0,
   series_id: trees_series.id,
-  issue_number: '3'
+  entity_number: '3'
 )

@@ -6,7 +6,7 @@ RSpec.describe 'Series' do
   let(:user) { create(:user) }
   let(:admin) { create(:user, admin: true) }
   let!(:series) { create(:series) }
-  let(:comicbook) { create(:comicbook, issue_number: '1', series:) }
+  let(:comicbook) { create(:comicbook, entity_number: '1', series:) }
   let(:valid_attributes) { attributes_for(:series) }
   let(:invalid_attributes) { { name: '', start_date: '', end_date: '', language: '', synopsis: '' } }
 
@@ -41,15 +41,15 @@ RSpec.describe 'Series' do
       end
 
       it 'includes the series comicbooks in the response body' do
-        create(:comicbook, issue_number: '1', series:)
-        create(:comicbook, issue_number: '2', series:)
+        create(:comicbook, entity_number: '1', series:)
+        create(:comicbook, entity_number: '2', series:)
         get series_path(series)
         expect(response.body).to include("#{series.name} #1", "#{series.name} #2")
       end
 
       it "includes the user's comicbooks in the series in the response body" do
         UserComicbook.create!(user:, comicbook:)
-        UserComicbook.create!(user:, comicbook: create(:comicbook, issue_number: '2', series:))
+        UserComicbook.create!(user:, comicbook: create(:comicbook, entity_number: '2', series:))
         get series_path(series)
         expect(response.body).to include(series.name, '#2')
       end
